@@ -2,6 +2,15 @@ const express = require('express');
 const app = express();
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
+const mongoose = require('mongoose')
+
+const productRoutes = require('./api/routes/products');
+const ordersRoutes = require('./api/routes/orders');
+
+mongoose.connect('mongodb+srv://catalin_sandru:' + process.env.MONGO_ATLAS_PW + '@node-restapi-bfmjk.mongodb.net/test?retryWrites=true&w=majority', 
+{
+  useMongoClient: true
+})
 
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({extended: false}));
@@ -17,8 +26,6 @@ app.use((req, res, next) => {
   next();
 });
 
-const productRoutes = require('./api/routes/products');
-const ordersRoutes = require('./api/routes/orders');
 
 app.use((req, res, next) => {
   const error = new Error('Not found');
