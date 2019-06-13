@@ -27,6 +27,8 @@ app.use((req, res, next) => {
   next();
 });
 
+app.use('/products', productRoutes);
+app.use('/orders', ordersRoutes);
 
 app.use((req, res, next) => {
   const error = new Error('Not found');
@@ -42,8 +44,5 @@ app.use((error, req, res, next) => {
     }
   })
 });
-
-app.use('/products', productRoutes);
-app.use('/orders', ordersRoutes);
 
 module.exports = app;

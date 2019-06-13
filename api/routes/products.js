@@ -23,7 +23,7 @@ router.post('/', (req, res, next) => {
   const product = new Product({
     _id: new mongoose.Types.ObjectId(),
     name: req.body.name,
-    price: req.bady.price
+    price: req.body.price
   });
   product
     .save()
@@ -32,7 +32,7 @@ router.post('/', (req, res, next) => {
       res.status(201).json({
         message: 'Handeling POST requests /products',
         createdProduct: result
-      });    
+      });
     })
     .catch(err => {
       console.log(err)
