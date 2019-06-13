@@ -9,8 +9,9 @@ const ordersRoutes = require('./api/routes/orders');
 
 mongoose.connect('mongodb+srv://catalin_sandru:' + process.env.MONGO_ATLAS_PW + '@node-restapi-bfmjk.mongodb.net/test?retryWrites=true&w=majority', 
 {
-  useMongoClient: true
-})
+  useNewUrlParser: true
+}
+)
 
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({extended: false}));
